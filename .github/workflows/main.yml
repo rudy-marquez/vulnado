@@ -1,0 +1,33 @@
+# This workflow is to automate Checkmarx SCA scans.  It runs on a push to the main branch.
+#
+# The following GitHub Secrets must be first defined:
+#   - CHECKMARX_SCA_USERNAME
+#   - CHECKMARX_SCA_PASSWORD
+#
+# The following variables must be inserted below:
+#   - <ProjectName>
+#   - <SCATenant>
+#   - <GitHubRepoUrl>
+#
+# For full documentation, including a list of all inputs, please refer to the README https://github.com/checkmarx-ts/checkmarx-cxflow-github-action
+
+name: Checkmarx SCA Scan - CxFlow
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: SCA Resolver
+      run: |
+          mkdir ${{ github.workspace }}/SCAResolver
+          wget "https://sca-downloads.s3.amazonaws.com/cli/latest/ScaResolver-linux64.tar.gz"
+          tar -xvf ScaResolver-linux64.tar.gz -C ${{ github.workspace }}/SCAResolver
+          ./SCAResolver/ScaResolver -s ${{ github.workspace }} -n scala3-example-project-git -a SCA-Champions -u ${{ secrets.CHECKMARX_SCA_USERNAME }} -p ${{ secrets.CHECKMARX_SCA_PASSWORD }} --log-level 'Verbose' --report-extension Pdf --report-type Risk --severity-threshold High
