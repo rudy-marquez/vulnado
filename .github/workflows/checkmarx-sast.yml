@@ -38,5 +38,5 @@ jobs:
         checkmarx_client_secret: 014DF517-39D1-4453-B7B3-9930C563627C
         break_build: false
         scanners: sast
-        bug_tracker: Sarif
+        bug_tracker: None
         params: --logging.level.org.springframework.web.client.RestTemplate=TRACE --logging.level.com.checkmarx.flow.service=DEBUG --logging.level.org.apache.http.wire=TRACE --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --repo-url="<GitHubRepoUrl>" --cx-flow.filterSeverity --cx-flow.filterCategory
