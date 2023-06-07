@@ -9,6 +9,9 @@ on:
       - master
       - main
 jobs:
+  test:
+    name: Checkmarx SAST Scan
+    uses: N3D4U2C/vulnado/.github/workflows/checkmarx-sast.yml@main
   build:
     runs-on: ubuntu-latest
     steps:
