@@ -1,0 +1,13 @@
+{
+  "version": 1.0,
+  "project": "Webgoat-cxflow",
+  "team": "/CxServer",
+  "sast": {
+    "preset": "Checkmarx Default",
+    "engineConfiguration": "",
+    "incremental": "false",
+    "forceScan": "true",
+    "fileExcludes": "",
+    "folderExcludes": "*test*"
+  }
+}
