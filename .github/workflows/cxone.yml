@@ -19,5 +19,5 @@ jobs:
           base_uri: https://deu.ast.checkmarx.net
           cx_client_id: ${{ secrets.CX_CLIENT_ID }}
           cx_client_secret: ${{ secrets.CX_CLIENT_SECRET }}
-          additional_params: "--container-images webgoat/webgoat-8.0:latest"
+          additional_params: "--container-images webgoat/webgoat-8.0:latest, --scan-types sast container-security"
           
