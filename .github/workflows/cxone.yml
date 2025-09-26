@@ -1,10 +1,16 @@
 name: Checkmarx One Scan
 on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+    branches:
+      - main
+      - master
+      - develop
   push:
     branches:
       - main
       - master
-      - dev
+      - develop
 jobs:
   build:
     runs-on: ubuntu-latest
