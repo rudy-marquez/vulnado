@@ -26,5 +26,5 @@ jobs:
           base_uri: https://deu.ast.checkmarx.net
           cx_client_id: ${{ secrets.CX_CLIENT_ID }}
           cx_client_secret: ${{ secrets.CX_CLIENT_SECRET }}
-          #additional_params: "--scan-types sast"
-          additional_params: "--container-images michaelbraunbass/vulnado:main --scan-types container-security,sast"
+          additional_params: "--scan-types sast,sca"
+          #additional_params: "--container-images michaelbraunbass/vulnado:main --scan-types container-security,sast"
