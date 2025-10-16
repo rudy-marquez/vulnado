@@ -26,5 +26,9 @@ jobs:
           base_uri: https://deu.ast.checkmarx.net
           cx_client_id: ${{ secrets.CX_CLIENT_ID }}
           cx_client_secret: ${{ secrets.CX_CLIENT_SECRET }}
-          additional_params: "--scan-types sast,sca"
+          additional_params: "--report-format sarif --output-path ."
           #additional_params: "--container-images michaelbraunbass/vulnado:main --scan-types container-security,sast"
+      - name: Upload SARIF to GitHub
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: cx_result.sarif
